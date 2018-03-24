@@ -8,7 +8,7 @@ fi
 # Specify hostname
 echo $HOSTNAME > /haraka/config/me
 
-if [[ ! -f "/haraka/config/tls_cert.pem" ]] || [[ ! -f "/haraka/config/tls_key.pem" ]]; then
+if [[ ! -f "/haraka/config/tls/tls_cert.pem" ]] || [[ ! -f "/haraka/config/tls/tls_key.pem" ]]; then
   echo '** [haraka] No TLS Certs Found, Autogenerating Self Signed Certificates'
   cat <<EOF > /tmp/openssl.cnf
 [ req ]
@@ -46,9 +46,9 @@ EOF
 
   openssl req -new -x509 -nodes -days 365 \
 	                -config /tmp/openssl.cnf \
-	                -out /haraka/config/tls_cert.pem \
-	                -keyout /haraka/config/tls_key.pem
-	chmod -R 0600 /certs/*
+	                -out /haraka/config/tls/tls_cert.pem \
+	                -keyout /haraka/config/tls/tls_key.pem
+	chmod -R 0600 /haraka/config/tls/*
 	rm -rf /tmp/openssl.cnf
 fi
 
