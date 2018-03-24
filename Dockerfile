@@ -10,7 +10,8 @@ USER root
 # the application is not started as this user,
 # but Haraka can be configured to drop its privileges
 # via smtp.ini
-RUN groupadd -r haraka && \
+RUN mkdir /haraka && \
+    groupadd -r haraka && \
     useradd --comment "Haraka Server User" \
             --home /haraka \
             --shell /bin/false \
