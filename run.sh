@@ -43,7 +43,7 @@ emailAddress=postmaster@${HOSTNAME#*.}
 [ cert_type ]
 nsCertType = server	 	
 EOF
-
+	mkdir -p /haraka/config/tls
   openssl req -new -x509 -nodes -days 365 \
 	                -config /tmp/openssl.cnf \
 	                -out /haraka/config/tls/tls_cert.pem \
