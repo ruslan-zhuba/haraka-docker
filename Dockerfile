@@ -5,7 +5,8 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin
 ENV HOSTNAME=haraka
 
-RUN npm -g install Haraka
+RUN npm -g install Haraka \
+    && npm -g install haraka-plugin-rspamd
 
 USER root
 # the application is not started as this user,
